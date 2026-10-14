@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/vrwrts/saezuri/compare/v1.1.2...v1.1.3) (2026-10-14)
+
+
+### Bug Fixes
+
+* bloom each bird in only once its image has loaded ([#54](https://github.com/vrwrts/saezuri/issues/54)) ([ff86938](https://github.com/vrwrts/saezuri/commit/ff86938e72f5fe00f9aa8490ecf243f8aabc915a)), closes [#36](https://github.com/vrwrts/saezuri/issues/36)
+
 ## [1.1.2](https://github.com/vrwrts/saezuri/compare/v1.1.1...v1.1.2) (2026-10-14)
 
 
