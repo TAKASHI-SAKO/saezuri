@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/vrwrts/saezuri/compare/v1.1.1...v1.1.2) (2026-10-14)
+
+
+### Bug Fixes
+
+* hold the collage layout while pinch-zoomed ([#53](https://github.com/vrwrts/saezuri/issues/53)) ([7144b4c](https://github.com/vrwrts/saezuri/commit/7144b4c7c7754525fbae51834ffd44b1373a41ee)), closes [#50](https://github.com/vrwrts/saezuri/issues/50)
+
 ## [1.1.1](https://github.com/vrwrts/saezuri/compare/v1.1.0...v1.1.1) (2026-08-25)
 
 
