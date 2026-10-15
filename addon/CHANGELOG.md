@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/vrwrts/saezuri/compare/v1.2.0...v1.2.1) (2026-10-15)
+
+
+### Bug Fixes
+
+* run on CPUs without AVX or ARMv8.2 ([#52](https://github.com/vrwrts/saezuri/issues/52)) ([bc7b1a8](https://github.com/vrwrts/saezuri/commit/bc7b1a8e1f9428f1e3aa71c88e32f5671dc39001)), closes [#51](https://github.com/vrwrts/saezuri/issues/51)
+
 # [1.2.0](https://github.com/vrwrts/saezuri/compare/v1.1.3...v1.2.0) (2026-10-14)
 
 
