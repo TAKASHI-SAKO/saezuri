@@ -57,6 +57,7 @@ token** as well.
 | --- | --- |
 | **BirdNET-Go URL** | Base URL of your instance, for example `http://192.168.1.10:8080`. Leave empty for the detection above. |
 | **BirdNET-Go token** | Bearer token. Only needed when BirdNET-Go runs in PrivateMode. |
+| **BirdNET-Go browser URL** | Browser-reachable root URL, without `/ui`. Links station recordings to their exact detection; leave empty to hide the source line. |
 | **Extra hostnames to probe** | Comma-separated hostnames tried before the built-in guesses during detection. |
 
 ### Illustrations
@@ -109,14 +110,22 @@ from the illustrations folder (see [Storage](#storage)) into a clone of the
 illustrations repository and open a pull request. The
 [README](https://github.com/vrwrts/saezuri#contributing-generated-art) walks through it.
 
-### Reference recordings
+### Call recordings
 
-When a species is heard, Saezuri looks up a freely-licensed recording of its call and
-caches it, so selecting a bird offers a play button.
+When a species is heard, Saezuri caches a recording so selecting a bird offers a play button.
+Set **Recording sources** to `birdnet,commons` to prefer the newest saved BirdNET-Go detection
+clip and use a representative Commons recording when no station clip is available.
+Set **BirdNET-Go browser URL** to its browser-reachable root, without `/ui`, to link that audio
+to the exact detection. Saezuri hides the BirdNET-Go source line when this is not configured.
+Station clips are served to everyone who can access Saezuri, even when fetched with a PrivateMode
+token. Enable them only where access to Saezuri is trusted. Removing `birdnet` stops future
+station lookups and removes station clips from the playback manifest on the next publish,
+even if Commons has no replacement. Cached files remain reachable by their existing URLs;
+clear the app's cached calls data to remove those files.
 
 | Option | Default | What it does |
 | --- | --- | --- |
-| **Recording archives** | `commons` | Comma-separated archives to search. Empty turns recordings off. |
+| **Recording sources** | `commons` | Comma-separated sources in priority order: `birdnet` and/or `commons`. Empty disables new lookups and unpublishes station clips; cached archive recordings remain available. |
 | **Recordings per cycle** | `4` | How many to look up at a time. |
 
 ### E-ink frames
@@ -187,8 +196,8 @@ use only**. Personal use in your own home is fine. Publishing the images, or a
 repository derived from them, carries obligations worth reading first: see
 [Credits and licensing](https://github.com/vrwrts/saezuri#credits-and-licensing).
 
-Cached reference recordings each carry their own CC licence and are always shown with
-their recordist credited.
+Cached station recordings are shown as coming from BirdNET-Go. Commons recordings carry
+their own CC licence and are shown with their recordist credited.
 
 ## Support
 
