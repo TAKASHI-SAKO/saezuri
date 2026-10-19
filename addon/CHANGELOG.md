@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/vrwrts/saezuri/compare/v1.2.1...v1.3.0) (2026-10-19)
+
+
+### Features
+
+* play BirdNET-Go detection recordings ([#49](https://github.com/vrwrts/saezuri/issues/49)) ([add59ad](https://github.com/vrwrts/saezuri/commit/add59ad31df5bc43be46099039a5785ba197933d))
+
 ## [1.2.1](https://github.com/vrwrts/saezuri/compare/v1.2.0...v1.2.1) (2026-10-15)
 
 
