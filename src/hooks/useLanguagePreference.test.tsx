@@ -43,4 +43,40 @@ describe('useLanguagePreference', () => {
     const { result } = renderHook(() => useLanguagePreference([], null))
     expect(result.current.lang).toBeNull()
   })
+
+  it('remembers the explicit station language choice', () => {
+    localStorage.setItem('saezuri:lang', 'station')
+    setLanguages(['de-DE'])
+
+    const { result } = renderHook(() => useLanguagePreference(['de', 'nl'], 'de'))
+
+    expect(result.current.lang).toBe('station')
+  })
+
+  it('persists station language when selected', () => {
+    setLanguages(['de-DE'])
+
+    const { result } = renderHook(() => useLanguagePreference(['de', 'nl'], 'de'))
+
+    act(() => result.current.setLang('station'))
+
+    expect(result.current.lang).toBe('station')
+    expect(localStorage.getItem('saezuri:lang')).toBe('station')
+  })
+
+  it('keeps station language when dictionary availability changes', () => {
+    localStorage.setItem('saezuri:lang', 'station')
+    setLanguages(['de-DE'])
+
+    const { result, rerender } = renderHook(
+      ({ locales }: { locales: ('de' | 'nl')[] }) => useLanguagePreference(locales, 'de'),
+      { initialProps: { locales: [] as ('de' | 'nl')[] } },
+    )
+
+    expect(result.current.lang).toBe('station')
+
+    rerender({ locales: ['de', 'nl'] })
+
+    expect(result.current.lang).toBe('station')
+  })
 })

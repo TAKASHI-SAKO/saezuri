@@ -55,7 +55,7 @@ function CollageView({ preset }: { preset: WindowPreset }) {
   // dictionary never gates the collage — names just swap in once it arrives.
   const { locales, default: defaultLocale } = useDictionaryIndex()
   const { lang, setLang } = useLanguagePreference(locales, defaultLocale)
-  const dict = useSpeciesDictionary(lang)
+  const dict = useSpeciesDictionary(lang === 'station' ? null : lang)
   const baseSpecies: Species[] = USE_MOCK ? mockSpecies(manifest) : live.species
   const species = useMemo(() => localizeCommonNames(baseSpecies, dict), [baseSpecies, dict])
 

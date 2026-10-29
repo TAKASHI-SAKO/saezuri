@@ -1,6 +1,7 @@
 import { Settings } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import type { DictLocale } from '../domain/locale.ts'
+import type { DisplayLanguage } from '../hooks/useLanguagePreference.ts'
 import { type ThemePref, useThemePreference } from '../hooks/useThemePreference.ts'
 import { LanguageSelect } from './LanguageSelect.tsx'
 import { SegmentedControl } from './SegmentedControl.tsx'
@@ -25,8 +26,8 @@ interface Props {
   /** Published display languages (from the dictionary index). */
   locales: readonly DictLocale[]
   /** Current display language, or null when nothing is published. */
-  lang: DictLocale | null
-  onLang: (locale: DictLocale) => void
+  lang: DisplayLanguage | null
+  onLang: (locale: DisplayLanguage) => void
 }
 
 /** Topbar settings: a menu button opening a soft popover card with the theme
@@ -116,12 +117,10 @@ export function SettingsMenu({ locales, lang, onLang }: Props) {
               variant="radiogroup"
             />
           </div>
-          {locales.length > 0 && (
-            <div className="menu-row" role="none">
-              <span className="menu-label mono">language</span>
-              <LanguageSelect locales={locales} value={lang} onChange={onLang} />
-            </div>
-          )}
+          <div className="menu-row" role="none">
+            <span className="menu-label mono">language</span>
+            <LanguageSelect locales={locales} value={lang} onChange={onLang} />
+          </div>
         </div>
       )}
     </div>

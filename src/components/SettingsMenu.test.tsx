@@ -18,13 +18,27 @@ describe('SettingsMenu', () => {
     expect(screen.getAllByRole('radio')).toHaveLength(3)
   })
 
-  it('shows the language dropdown only when locales are published', () => {
+  it('keeps the language dropdown available without published dictionaries', () => {
     const { rerender } = render(<SettingsMenu locales={['de']} lang="de" onLang={() => {}} />)
-    openMenu()
-    expect(screen.getByRole('combobox', { name: 'Display language' })).toBeInTheDocument()
 
-    rerender(<SettingsMenu locales={[]} lang={null} onLang={() => {}} />)
-    expect(screen.queryByRole('combobox')).toBeNull()
+    openMenu()
+
+    const select = screen.getByRole('combobox', {
+      name: 'Display language',
+    }) as HTMLSelectElement
+
+    expect(select.options).toHaveLength(2)
+    expect(select.value).toBe('de')
+
+    rerender(<SettingsMenu locales={[]} lang="station" onLang={() => {}} />)
+
+    const stationSelect = screen.getByRole('combobox', {
+      name: 'Display language',
+    }) as HTMLSelectElement
+
+    expect(stationSelect.options).toHaveLength(1)
+    expect(stationSelect.options[0].value).toBe('station')
+    expect(stationSelect.value).toBe('station')
   })
 
   it('closes on Escape and on outside click', () => {
