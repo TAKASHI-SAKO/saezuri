@@ -10,6 +10,7 @@ describe('LanguageSelect', () => {
     const select = screen.getByRole('combobox') as HTMLSelectElement
     const labels = Array.from(select.options).map((o) => o.textContent)
 
+    // Intl.DisplayNames endonyms: German "Deutsch", Dutch "Nederlands".
     expect(labels).toEqual(['Station language', 'Deutsch', 'Nederlands'])
     expect(select.value).toBe('de')
   })

@@ -25,7 +25,7 @@ function animationsOff(): boolean {
 interface Props {
   /** Published display languages (from the dictionary index). */
   locales: readonly DictLocale[]
-  /** Current display language, or null when nothing is published. */
+  /** Current display language, including the station's own names; null if unresolved. */
   lang: DisplayLanguage | null
   onLang: (locale: DisplayLanguage) => void
 }
